@@ -1,0 +1,496 @@
+1.(a) Write a Program in C# to demonstrate Command line arguments processing for the following 
+    using System; 
+       using System.Text; 
+      using System.Collections; 
+      using System.Data; 
+      namespace Cons 
+    { 
+      public class squareroot 
+      { 
+          public static void Main() 
+          { 
+                  Console.WriteLine("Enter a Number : "); 
+                  int Number = Convert.ToInt16(Console.ReadLine()); 
+                  double SqrtNumber = Math.Sqrt(Number); 
+                  Console.WriteLine("Square root of {0} is: {1}", Number, SqrtNumber); 
+                  Console.ReadLine(); 
+          } 
+      } 
+  } 
+1.(b) To find the sum & average of three numbers 
+  using System; 
+  using System.Collections.Generic; 
+  using System.Linq; 
+  using System.Text; 
+    
+  namespace Program 
+  { 
+      class Program 
+      { 
+          static void Main(string[] args) 
+          { 
+              int num, sum = 0, r; 
+              Console.WriteLine("Enter a Number : "); 
+              num = int.Parse(Console.ReadLine()); 
+              while (num != 0) 
+              { 
+                  r = num % 10; 
+                  num = num / 10; 
+                  sum = sum + r; 
+              } 
+              Console.WriteLine("Sum of Digits of the Number : "+sum); 
+              Console.ReadLine(); 
+    
+          } 
+      } 
+  } 
+ 
+ 
+2.Write a Program in C# to demonstrate the following 
+(a) Boxing and UnBoxing 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+  
+
+namespace prg2 
+{ 
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+            int i = 10; 
+            object o = i; 
+            Console.WriteLine("int boxing {0}",o); 
+                int j=(int)o; 
+                Console.WriteLine("int unboxing {0}", j); 
+                long p = 999999; 
+                object k = p; 
+                Console.WriteLine("long boxing {0}", k); 
+                long l = (long)k; 
+                Console.WriteLine("long unboxing {0}", l); 
+                Console.Read(); 
+        } 
+    } 
+} 
+ 
+ (b) Invalid unboxing 
+class TestUnboxing 
+{ 
+    static void Main() 
+    { 
+        int i = 123; 
+        object o = i;  // implicit boxing 
+        try 
+        { 
+            int j = (short)o;  // attempt to unbox 
+ 
+            System.Console.WriteLine("Unboxing OK."); 
+        } 
+        catch (System.InvalidCastException e) 
+        { 
+            System.Console.WriteLine("{0} Error: Incorrect unboxing.", e.Message); 
+        } 
+    } 
+} 
+ 
+ 
+3.Write a program in C# to add Two complex numbers using Operator overloading 
+ 
+using System; 
+ 
+public struct Complex 
+{ 
+    public int real; 
+    public int imaginary; 
+ 
+    public Complex(int real, int imaginary) 
+    { 
+        this.real = real; 
+        this.imaginary = imaginary; 
+
+ 
+    } 
+ 
+     
+    public static Complex operator +(Complex c1, Complex c2) 
+    { 
+        return new Complex(c1.real + c2.real, c1.imaginary + c2.imaginary); 
+    } 
+        public override string ToString() 
+    { 
+        return (String.Format("{0} + {1}i", real, imaginary)); 
+    } 
+ 
+    public static void Main() 
+    { 
+        Complex num1 = new Complex(2, 3); 
+        Complex num2 = new Complex(3, 4); 
+ 
+         
+        Complex sum = num1 + num2; 
+ 
+                Console.WriteLine("First complex number:  {0}", num1); 
+        Console.WriteLine("Second complex number: {0}", num2); 
+        Console.WriteLine("The sum of the two numbers: {0}", sum); 
+        Console.ReadLine(); 
+ 
+    } 
+} 
+ 
+4. Write a Program in C# to find the sum of each row of given jagged array of 3inner arrays 
+using System; 
+ 
+namespace jag 
+{ 
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+            const int rows = 3; 
+            int i, sum= 0; 
+            int[][] j_arr = new int[rows][]; 
+            j_arr[0] = new int[2]; 
+            j_arr[1] = new int[3]; 
+            j_arr[2] = new int[4]; 
+ 
+            j_arr[0][1] = 10; 
+            j_arr[1][0] = 20; 
+            j_arr[1][1] = 30; 
+            j_arr[2][0] = 40; 
+            j_arr[2][2] = 50; 
+            j_arr[2][3] = 60; 
+            for (i = 0; i < 2; i++) 
+                sum += j_arr[0][i]; 
+            for (i = 0; i < 3; i++) 
+                sum += j_arr[1][i]; 
+            for (i = 0; i < 4; i++) 
+                sum += j_arr[2][i]; 
+ 
+ 
+            Console.WriteLine("sum is :{0}",sum); 
+                Console.Read(); 
+        } 
+    } 
+} 
+ 
+ 
+5. Write a Program in C# to demonstrate Array Out of Bound Exception using Try, Catch and Finally blocks 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+ 
+namespace lab5 
+{ 
+    class DivNumbers 
+        { 
+        int result; 
+        DivNumbers() 
+        { 
+            result = 0; 
+        } 
+        public void division(int num1,int num2) 
+        { 
+            try 
+            { 
+                result = num1 / num2; 
+            } 
+            catch (DivideByZeroException e) 
+            { 
+                Console.WriteLine("Exception caught:{0}", e); 
+            } 
+            finally 
+            { 
+                Console.WriteLine("Result:{0}", result); 
+            } 
+        } 
+        static void Main(string[] args) 
+        { 
+            DivNumbers d = new DivNumbers(); 
+            d.division(25, 0); 
+            Console.ReadLine(); 
+        } 
+    } 
+} 
+ 
+6. Write a Program to Demonstrate Use of Virtual and override key words in C# with a simple program 
+ 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+ 
+
+ 
+namespace lab6 
+{ 
+    class BC 
+    { 
+        public virtual void display() 
+        { 
+            System.Console.WriteLine("BC::Display"); 
+        } 
+    } 
+    class DC : BC 
+    { 
+        public override void display() 
+        { 
+            System.Console.WriteLine("DC::Display"); 
+        } 
+        class TC : DC 
+        { 
+            public override void display() 
+            { 
+                System.Console.WriteLine("TC::Display"); 
+            } 
+        } 
+        class program 
+        { 
+            public static void Main(string[] args) 
+            { 
+                BC b; 
+                b = new BC(); 
+                b.display(); 
+                b = new DC(); 
+                b.display(); 
+                b = new TC(); 
+                b.display(); 
+                Console.ReadLine(); 
+            } 
+        } 
+    } 
+} 
+ 
+7. Write a Program in C# to create and implement a Delegate for any two arithmetic operations 
+ 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+delegate int NumberChanger(int n); 
+namespace lab7 
+{ 
+    class TestDelegate 
+    { 
+        static int num = 10; 
+        public static int AddNum(int p) 
+        { 
+            num += p; 
+            return num; 
+        } 
+
+ 
+        public static int MulNum(int q) 
+        { 
+            num *= q; 
+            return num; 
+        } 
+        public static int getNum() 
+        { 
+            return num; 
+        } 
+        public static void Main(String[] args) 
+        { 
+            NumberChanger nc1 = new NumberChanger(AddNum); 
+            NumberChanger nc2 = new NumberChanger(MulNum); 
+            nc1(25); 
+            Console.WriteLine("value of num:" + getNum()); 
+            nc2(5); 
+            Console.WriteLine("value of num:" + getNum()); 
+            Console.ReadKey(); 
+ 
+        } 
+    } 
+} 
+ 
+8. Write a Program in C# to demonstrate abstract class and abstract methods in C#. 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+ 
+namespace ConsoleApplication8 
+{ 
+    abstract class shape 
+    { 
+         
+    protected float r,l,b; 
+        public abstract float Area(); 
+        public abstract float Circumference(); 
+    } 
+    class Rectangle:shape 
+    { 
+        public void GetLB() 
+        { 
+            Console.Write("Enter length:"); 
+            l = float.Parse(Console.ReadLine()); 
+            Console.Write("Enter Breadth:"); 
+            b = float.Parse(Console.ReadLine()); 
+        } 
+        public override float  Area() 
+{ 
+  return l*b; 
+        } 
+        public override float  Circumference() 
+{ 
+  return 2*(l+b); 
+        } 
+    } 
+
+    class Circle:shape 
+    { 
+        public void GetRadius() 
+        { 
+            Console.Write("enter radius:"); 
+            r=float.Parse(Console.ReadLine()); 
+        } 
+        public override float  Area() 
+{ 
+ return 3.14f*r*r; 
+        } 
+        public override float  Circumference() 
+{ 
+  return 2*3.14f*r; 
+        } 
+    } 
+    class Mainclass 
+    { 
+        public static void Calculate(shape s) 
+        { 
+ 
+Console.WriteLine("Area:"+s.Area()); 
+            Console.WriteLine("Circumference:"+s.Circumference()); 
+        } 
+        static void Main(string[] args) 
+        { 
+            Rectangle R=new Rectangle(); 
+            R.GetLB(); 
+            Calculate(R); 
+            Console.WriteLine(); 
+            Circle C=new Circle(); 
+            C.GetRadius(); 
+            Calculate(C); 
+            Console.ReadKey(); 
+} 
+ 
+} 
+} 
+     
+9. Write a program to Set & Get the Name & Age of a person using Properties of C# to illustrate the use of 
+different properties in C#. 
+ 
+using System; 
+using System.Collections.Generic; 
+using System.Text; 
+ 
+namespace lab17 
+{ 
+       class student 
+    { 
+        int sno; 
+        string sname; 
+        public int stu_no 
+        { 
+            set 
+            { 
+
+                sno = value; 
+            } 
+            get 
+            { 
+                return sno; 
+            } 
+        } 
+        public string stu_name 
+        { 
+            set 
+            { 
+                sname = value; 
+            } 
+            get 
+            { 
+                return sname; 
+            } 
+        } 
+    } 
+       class Program 
+       { 
+           static void Main(string[] args) 
+           { 
+               student xx = new student(); 
+               xx.stu_no = 054; 
+               xx.stu_name = "sai sree"; 
+               Console.WriteLine("student no={0} \n student name={1}", xx.stu_no, xx.stu_name); 
+               Console.Read(); 
+           } 
+       } 
+   } 
+ 
+ 
+10. Write a Program in C# Demonstrate arrays of interface types (for runtime polymorphism). 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Text; 
+ 
+namespace ConsoleApplication2 
+{ 
+    class Program 
+    { 
+        static void Main(string[] args) 
+        { 
+            List<Dog> dogs = new List<Dog>(); 
+            dogs.Add(new Dog("fido")); 
+            dogs.Add(new Dog("BOb")); 
+            dogs.Add(new Dog("Adam")); 
+            dogs.Sort(); 
+            foreach (Dog dog in dogs) 
+                Console.WriteLine(dog.Describe()); 
+            Console.ReadKey(); 
+ 
+ 
+        } 
+
+ 
+    } 
+    interface IAnimal 
+    { 
+        string Describe(); 
+        string Name 
+        { 
+            get; 
+            set; 
+        } 
+    } 
+    class Dog : IAnimal, IComparable 
+    { 
+        private string name; 
+        public Dog(string name) 
+        { 
+            this.Name = name; 
+        } 
+        public string Describe() 
+        { 
+            return "Hello I am a Dog and my name is" + this.Name; 
+        } 
+        public int CompareTo(object obj) 
+        { 
+            if (obj is IAnimal) 
+                return this.Name.CompareTo((obj as IAnimal).Name); 
+            return 0; 
+        } 
+        public string Name 
+        { 
+            get 
+            { 
+                return name; 
+} 
+            set 
+            { 
+                name = value; 
+            } 
+        } 
+    } 
+} 
